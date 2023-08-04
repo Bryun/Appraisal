@@ -1,184 +1,143 @@
 from asyncio import run
-from os import listdir, environ, path, remove
+from os import listdir
 from re import search
+import re
 from time import sleep
-from selenium.common import NoSuchElementException, TimeoutException
 from selenium.webdriver.common.by import By
+from scrapers.icounty import ICounty
 from utils.excel import Excel
-from utils.scraper import Scraper, DOWNLOADS
-from dotenv import load_dotenv, find_dotenv
+from utils.scraper import Scraper
 from utils.sqlite import SQLite
-
-load_dotenv(find_dotenv())
-
-YEAR = environ.get('YEAR')
-COUNTY = 'Angelina'
+from utils.timer import Timer
+from zipfile import ZipFile
 
 
-class Angelina(Scraper):
+class Angelina(ICounty):
+    def __init__(self):
+        self.COUNTY: str = "Angelina"
+        self.URL: str = ""
+        self.DOWNLOADS_DIR = f"D:/Forge/WorkBench/Appraisal/downloads/{self.COUNTY}/"
 
-    def __init__(self, url: str):
-        super().__init__(url=url)
-        self.url = url
+        self.BLUEPRINT_DIR: str = f"{self.DOWNLOADS_DIR}/blueprint/"
+        self.LAYOUT_ZIP = ""
 
-    async def blueprint(self):
-        try:
-            with SQLite() as sql:
-                blueprint = await sql.dataframe(sql='''
-                SELECT 
-                    ID, PayloadID, Field_Name, Datatype, "Start", "End", "Length", Description, CountyID 
-                FROM Blueprint b 
-                WHERE b.CountyID IN (
-                    SELECT c.ID FROM County c 
-                    WHERE c.Name = ?
-                );''', parameters=[COUNTY])
+        self.DATA_DIR: str = f"{self.DOWNLOADS_DIR}/data/"
+        self.APPRAISAL_ROLL = ""
 
-            if len(blueprint.index) == 0:
-                layout = self.driver.find_element(By.XPATH, "//a[contains(text(), 'Appraisal Export Layout')]")
+    async def has_blueprint(self) -> bool:
+        with SQLite(path="../appraisals.db") as sql:
+            return await sql.exists(
+                f"SELECT COUNT(*) AS Layout FROM Blueprint b INNER JOIN County c ON b.CountyID = c.ID WHERE c.Name = '{self.COUNTY}';"
+            )
 
-                href = layout.get_attribute('href')
-                file = search(r"[\w\-\.]+$", href)[0]
-                properties = file.split('.')
+    async def download_blueprint(self):
+        with SQLite(path="../appraisals.db") as sql:
+            row = await sql.select(
+                f"SELECT URL FROM County c WHERE c.Name = '{self.COUNTY}';"
+            )
+            self.URL = row[0]
+
+        if self.URL is not None:
+            with Scraper(url=self.URL, download_dir=self.BLUEPRINT_DIR) as browser:
+                layout = browser.driver.find_element(
+                    By.PARTIAL_LINK_TEXT, "Appraisal Export Layout"
+                )
+
+                href = layout.get_attribute("href")
+                self.LAYOUT_ZIP = search(r"[\w\-.]+$", href)[0]
+                clock = Timer()
 
                 layout.click()
+                clock.start()
 
-                while file not in listdir('../downloads'):
-                    sleep(1)
-                    print('waiting...')
+                while self.LAYOUT_ZIP not in listdir(self.BLUEPRINT_DIR):
+                    sleep(5)
+                    clock.display()
 
-                with Excel(location=f'../downloads/{file}') as reader:
-                    data = await reader.layout(start=('A', 55), end=('F', 491))
-                    data.rename({'Field Name': 'Field_Name'}, axis='columns', inplace=True)
-                    print(data.tail())
+                clock.stop()
 
-                with SQLite() as sql:
-                    await sql.bulk_insert_dataframe(table='Blueprint', frame=data)
+    async def read_blueprint(self):
+        with ZipFile(f"{self.BLUEPRINT_DIR}{self.LAYOUT_ZIP}") as archive:
+            files = [
+                x
+                for x in archive.namelist()
+                if search(re.compile("^Appraisal Export Layout"), x)
+            ]
 
-                print('Blueprint loaded')
+            for file in files:
+                archive.extract(member=file, path=self.BLUEPRINT_DIR)
 
-                remove(f'../downloads/{file}')
+        with Excel(
+            location=f"{self.BLUEPRINT_DIR}\\Appraisal Export Layout - 8.0.26.xlsx"
+        ) as reader:
+            data = await reader.read(
+                name="PACS File Layout", start=("A", 55), end=("F", 490)
+            )
 
-        except NoSuchElementException as e:
-            print(str(e))
-        except TimeoutException as e:
-            print(str(e))
-        except Exception as e:
-            print(str(e))
+    async def save_blueprint(self, data):
+        with SQLite(path="../appraisals.db") as db:
+            for i in data.index:
+                sql = f"""
+                INSERT INTO Blueprint (Field_Name, Datatype, 'Start', 'End', 'Length', Description, CountyID) 
+                VALUES
+                (
+                    {data['Field Name'][i]}, {data['Datatype'][i]}, {data['Start'][i]}, {data['End'][i]}, 
+                    {data['Length'][i]}, {data['Description'][i]}, 
+                    (SELECT ID FROM County WHERE Name = '{self.COUNTY}')
+                );"""
+                await db.query(sql)
 
-    async def appraisal(self):
-        try:
-            layout = self.driver.find_element(By.XPATH, f"//a[contains(text(), '{YEAR} Appraisal Roll Data Export')]")
+    async def download_data(self):
+        with SQLite(path="../appraisals.db") as sql:
+            row = await sql.select(
+                f"SELECT URL FROM County c WHERE c.Name = '{self.COUNTY}';"
+            )
+            self.URL = row[0]
 
-            href = layout.get_attribute('href')
-            file = search(r"[\w\-\.]+$", href)[0]
-            properties = file.split('.')
+        if self.URL is not None:
+            with Scraper(url=self.URL, download_dir=self.DATA_DIR) as browser:
+                layout = browser.driver.find_element(
+                    By.LINK_TEXT, "2022 Appraisal Roll Data Export"
+                )
 
-            layout.click()
+                href = layout.get_attribute("href")
+                self.APPRAISAL_ROLL = search(r"[\w\-.]+$", href)[0]
+                clock = Timer()
 
-            sleep(2)
+                layout.click()
+                clock.start()
 
-            while file not in listdir(DOWNLOADS):
-                sleep(1)
-                print('waiting...')
+                while self.APPRAISAL_ROLL not in listdir(self.DATA_DIR):
+                    sleep(5)
+                    clock.display()
 
-            # while path.exists(f"{RESOURCE}/{properties[0]}.crdownload"):
-            #     sleep(1)
-            #     print('waiting...')
+                clock.stop()
 
-        except NoSuchElementException as e:
-            print(str(e))
-        except TimeoutException as e:
-            print(str(e))
-        except Exception as e:
-            print(str(e))
+    async def read_data(self):
+        # with ZipFile(
+        #     f"{self.BLUEPRINT_DIR}\\Appraisal_Export_Layout_-_8.0.26.zip"
+        # ) as archive:
+        #     files = [
+        #         x
+        #         for x in archive.namelist()
+        #         if search(re.compile("^Appraisal Export Layout"), x)
+        #     ]
+        #
+        #     for file in files:
+        #         archive.extract(member=file, path=self.BLUEPRINT_DIR)
+        #
+        # with Excel(
+        #     location=f"{self.BLUEPRINT_DIR}\\Appraisal Export Layout - 8.0.26.xlsx"
+        # ) as reader:
+        #     data = await reader.read(
+        #         name="PACS File Layout", start=("A", 55), end=("F", 490)
+        #     )
+        pass
 
-
-async def main():
-    with SQLite() as sql:
-        county = await sql.dataframe(sql='''
-        SELECT 
-            ID, Name, URL, Located, Script 
-        FROM County c 
-        WHERE Name = ?;
-        ''', parameters=[COUNTY])
-
-    with Angelina(url=county['URL'][0]) as worker:
-        await worker.blueprint()
-
-    # with Excel(location='../resources/Appraisal_Export_Layout_-_8.0.25.xlsx') as reader:
-    #     data = await reader.layout(start=('A', 55), end=('F', 491))
-    #     data.rename({'Field Name': 'Field_Name'}, axis='columns', inplace=True)
-    #     print(data.tail())
-
-    # with SQLite(path='../appraisals.db') as sql:
-    #     # await sql.drop_and_recreate(table='Payload', o=Payload())
-    #     # await sql.drop_and_recreate(table='Blueprint', o=Blueprint())
-    #
-    #     # frame = await sql.dataframe("SELECT ID, Name, URL, Located FROM County c WHERE c.Name = 'Angelina';",
-    #     #                             ['ID', 'Name', 'URL', 'Located'])
-    #     #
-    #     # for i, row in frame.iterrows():
-    #     #
-    #     #     payload = Payload()
-    #     #     payload.CountyID = row['ID']
-    #     #     payload.Name = 'APPRAISAL_INFO'
-    #     #
-    #     #     await sql.insert(table='Payload', o=payload)
-    #
-    #     # frame = await sql.dataframe("""SELECT p.ID, p.CountyID, p.Name FROM Payload p
-    #     # WHERE p.CountyID = (SELECT ID FROM County c WHERE c.Name = 'Angelina');""",
-    #     #                             ['ID', 'CountyID', 'Name'])
-    #     #
-    #     # for i, row in frame.iterrows():
-    #     #     data.insert(1, 'PayloadID', row['ID'])
-    #     #
-    #     #     print(data.head())
-    #     #
-    #     #     await sql.bulk_insert_dataframe(table='Blueprint', frame=data)
-    #
-    #     blueprint = await sql.dataframe(sql=f'''SELECT
-    #         Field_Name, Datatype, "Start", "End", "Length", Description
-    #     FROM Blueprint b
-    #     WHERE b.PayloadID = (
-    #         SELECT p.ID FROM Payload p WHERE p.CountyID = (
-    #             SELECT ID FROM County c WHERE c.Name = '{'Angelina'}'
-    #         )
-    #     );''')
-
-    # with Mongo() as connection:
-    #     database = connection['Appraisal']
-    #     collection = database['Roll']
-
-    # publisher = Publisher(name=CONVERTER)
-    #
-    # with open('../resources/2022-08-16_000973_APPRAISAL_INFO.TXT', 'r') as reader:
-    #     for line in reader:
-    #         publisher.publish(line)
-    #         # sleep(0.05)
-
-    # collection.insert_many([await insert(blueprint, line) for line in reader])
-
-    # with Mongo() as connection:
-    #     database = connection['Appraisal']
-    #     collection = database['Roll']
-    #     collection.insert_one()
-
-    # with open('', 'r') as reader:
-    #     for line in reader.readline():
-    #         for i, row in data.iterrows():
-    #             pass
-    #
-    # pass
-
-    # county = await sql.dataframe()
-    #
-    # with ZipFile('../resources/2022-08-16_000973_APPRAISAL_INFO.zip') as archive:
-    #     name = [x for x in archive.namelist() if search('_APPRAISAL_INFO', x)][0]
-    #     archive.extract(member=name, path='../resources')
-
-    print('Completed...')
-
-    return map
+    async def save_date(self):
+        pass
 
 
-run(main())
+# TODO: Complete layout data insert.
+x = Angelina()
+run(x.read_blueprint())

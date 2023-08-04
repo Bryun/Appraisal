@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Black">
+    <option name="enabledOnReformat" value="true" />
+    <option name="enabledOnSave" value="true" />
+    <option name="executionMode" value="BINARY" />
+    <option name="pathToExecutable" value="C:\Python311\Scripts\black.exe" />
+    <option name="sdkUUID" value="d6fe9493-ae97-42df-afa1-4193df2336eb" />
+  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.11 (Appraisal) (2)" project-jdk-type="Python SDK" />
+</project>

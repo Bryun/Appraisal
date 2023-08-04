@@ -1,11 +1,12 @@
 import sqlite3
 from decimal import Decimal
+from json import dumps
 
 from pandas import DataFrame
 
 
 class SQLite:
-    def __init__(self, path: str = '../appraisals.db'):
+    def __init__(self, path: str = "../appraisals.db"):
         self.connection = sqlite3.connect(path)
 
     def __enter__(self):
@@ -15,9 +16,26 @@ class SQLite:
         self.connection.close()
 
     async def bulk_insert(self, table: str, values: list[dict]) -> int:
-
-        select: str = [f"SELECT {', '.join([f'{v} AS {k}' for k, v in row.items()])}" for row in values]
-        sql: str = '\nUNION ALL '.join(select)
+        select = [
+            "SELECT {}".format(
+                ", ".join(
+                    [
+                        "NULL AS {0}".format(k)
+                        if v is None
+                        else "'{0}' AS {1}".format(str(dumps(v)), k)
+                        if type(v) is dict
+                        else "{0} AS {1}".format(v, k)
+                        if type(v) is int
+                        else "{0} AS {1}".format(v, k)
+                        if v.isnumeric()
+                        else "'{0}' AS {1}".format(v, k)
+                        for k, v in row.items()
+                    ]
+                )
+            )
+            for row in values
+        ]
+        sql: str = "\nUNION ALL ".join(select)
         sql = f"INSERT INTO {table} ({', '.join(values[0].keys())}) {sql}"
 
         cursor = self.connection.cursor()
@@ -27,18 +45,18 @@ class SQLite:
         return cursor.lastrowid
 
     async def bulk_insert_dataframe(self, table: str, frame: DataFrame) -> int:
-
         rows: list = []
 
         for i, row in frame.iterrows():
             columns: list = []
 
             for k, v in row.items():
-
                 formatted: str = v.strip().replace("'", "''") if type(v) is str else v
 
-                if formatted not in [None, '']:
-                    formatted = f"'{formatted}'" if type(formatted) is not int else formatted
+                if formatted not in [None, ""]:
+                    formatted = (
+                        f"'{formatted}'" if type(formatted) is not int else formatted
+                    )
                 else:
                     formatted = "NULL"
 
@@ -47,7 +65,7 @@ class SQLite:
             rows.append(f"SELECT {', '.join(columns)}")
 
             if i % 499 == 0 or i == len(frame.index) - 1:
-                sql: str = '\nUNION ALL '.join(rows)
+                sql: str = "\nUNION ALL ".join(rows)
                 sql = f"INSERT INTO {table} ({', '.join(x.strip() for x in list(frame.columns))}) {sql}"
 
         cursor = self.connection.cursor()
@@ -60,17 +78,34 @@ class SQLite:
         sql: str = f"SELECT ID FROM {table} WHERE {' AND '.join([f'{k} = {v}' for k, v in filter.items()])};"
         return sql
 
-    async def select(self, sql: str) -> list[tuple]:
+    async def select(self, sql: str) -> tuple:
+        cursor = self.connection.cursor()
+        print(f"\n{sql}\n")
+        cursor.execute(sql)
+        row = cursor.fetchone()
+        return row
+
+    async def select_all(self, sql: str) -> list[tuple]:
         cursor = self.connection.cursor()
         print(f"\n{sql}\n")
         cursor.execute(sql)
         rows = cursor.fetchall()
         return rows
 
+    async def exists(self, sql: str) -> bool:
+        cursor = self.connection.cursor()
+        print(f"\n{sql}\n")
+        cursor.execute(sql)
+        row = cursor.fetchone()
+        return row[0] > 0
+
     async def dataframe(self, sql: str, parameters: list = None) -> DataFrame:
         cursor = self.connection.cursor()
         print(f"\n{sql}\n")
-        cursor.execute(sql, parameters)
+        if parameters is None:
+            cursor.execute(sql)
+        else:
+            cursor.execute(sql, parameters)
         rows = cursor.fetchall()
         return DataFrame(rows, columns=list(map(lambda x: x[0], cursor.description)))
 
@@ -92,16 +127,21 @@ class SQLite:
         cursor.execute(sql)
         self.connection.commit()
 
-    async def insert(self, table: str, o: object) -> int:
-
-        sql: str = f"INSERT INTO {table} ({', '.join(o.__dict__.keys())}) VALUES ({', '.join(['?' for k in o.__dict__.keys()])});"
-
+    async def insert(self, sql: str, parameters: list) -> int:
         cursor = self.connection.cursor()
-        parameters = tuple([v for v in o.__dict__.values()])
         cursor.execute(sql, parameters)
         self.connection.commit()
         return cursor.lastrowid
 
-    # select: str = [f"SELECT {', '.join([f'{v} AS {k}' for k, v in row.items()])}" for row in values]
-    # sql: str = '\nUNION ALL '.join(select)
-    # sql = f"INSERT INTO {table} ({', '.join(values[0].keys())}) {sql}"
+    async def query(self, sql: str) -> int:
+        cursor = self.connection.cursor()
+        print(f"\n{sql}\n")
+        cursor.execute(sql)
+        self.connection.commit()
+        return cursor.lastrowid
+
+    async def select_by_parameter(self, sql: str, parameters: list) -> DataFrame:
+        cursor = self.connection.cursor()
+        cursor.execute(sql, parameters)
+        rows = cursor.fetchall()
+        return DataFrame(rows, columns=list(map(lambda x: x[0], cursor.description)))

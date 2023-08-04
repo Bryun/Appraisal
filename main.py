@@ -1,45 +1,55 @@
-from time import sleep
-from scripts.queues import FILE, CONVERTER
-from utils.publisher import Publisher
+from utils.csv import CSV
+from utils.excel import Excel
+from utils.sqlite import SQLite
+from asyncio import run
+from json import dumps
 
-COUNTY: str = 'Angelina'
+
+# COUNTY: str = 'Angelina'
 
 
 async def main():
-    # try:
-    #     with Excel(location='Book1.xlsx') as reader:
-    #         data = await reader.read(start=('A', 1), end=('C', 255))
-    #
-    #         for x in data.columns:
-    #             data[x] = data[x].str.replace('\xa0', '', regex=True)
-    #             data[x] = data[x].str.strip()
-    #
-    #             if x == 'Name':
-    #                 data[x] = data[x].str.replace('^\d+\s', '', regex=True)
-    #
-    #         with SQLite(path='appraisals.db') as sql:
-    #             await sql.drop_and_recreate(table='County', o=County())
-    #             await sql.bulk_insert_dataframe(table='County', frame=data)
-    # except Exception as e:
-    #     print(str(e))
+    try:
 
-    # publisher = Publisher(name=FILE)
-    #
-    # with open('resources/2022-08-16_000973_APPRAISAL_INFO.TXT', 'r') as reader:
-    #     for line in reader:
-    #         publisher.publish(line)
-    #         # sleep(0.05)
+        # collection = await CSV.dictionary('downloads/ARMSTONG CAD 2022 CERTIFIED BPP OPEN RECORDS/layout.csv')
+        collection = await CSV.read('downloads/ARMSTONG CAD 2022 CERTIFIED BPP OPEN RECORDS/layout.csv', delimiter='|')
+        print(dumps(collection, indent=4))
 
-    print('Completed...')
+        data: list = []
+
+        with SQLite(path='appraisals.db') as sql:
+            result = await sql.select("SELECT ID FROM County c WHERE c.Name = 'Armstrong';")
+            for row in collection:
+                data.append({
+                    'Field_Name': row['DESCRIPTION'],
+                    'Datatype': None,
+                    'Start': row['BEG'],
+                    'End': row['END'],
+                    'Length': row['LENGTH'],
+                    'Description': row['DESCRIPTION'],
+                    'Metadata': {
+                        'DEC': row['DEC'],
+                        'A/N/P': row['A/N/P']
+                    },
+                    'CountyID': result[0][0]
+                })
+
+            await sql.bulk_insert(table='Blueprint', values=data)
+
+        print(dumps(data, indent=4))
+
+        print('Formatted...')
+
+    except Exception as e:
+        print(str(e))
 
 
-# run(main())
+async def read():
+    with Excel(location='./resources/County.xlsx') as reader:
+        data = await reader.read(start=('A', 1), end=('C', 255))
+        print(data.to_markdown())
 
-# publisher = Publisher(name=CONVERTER)
-#
-# with open('resources/2022-08-16_000973_APPRAISAL_INFO.TXT', 'r') as reader:
-#     for line in reader:
-#         publisher.publish(line)
-#         sleep(0.14)
+if __name__ == '__main__':
+    run(read())
 
 print('Completed...')

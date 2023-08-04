@@ -16,9 +16,10 @@ class Storage(Consumer):
     def __init__(self, name: str, exchange: str = STORAGE):
         self.connection = MongoClient(f"mongodb://{MONGO}")
         self.database = self.connection['Appraisal']
-        self.collection = self.database['Roll']
+        # self.collection = self.database['Roll']
+        self.collection = self.database['TMDO19U']
         self.error = self.database['Error']
-        self.collection.create_index([("prop_id", 1), ("prop_val_yr", 1), ("geo_id", 1)], unique=True)
+        # self.collection.create_index([("prop_id", 1), ("prop_val_yr", 1), ("geo_id", 1)], unique=True)
 
         super().__init__(name=name, exchange=exchange)
 

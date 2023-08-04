@@ -36,12 +36,15 @@ class Converter(Consumer):
                 key = f"filler_{filler}"
                 filler += 1
 
-            if row['Datatype'].startswith('char'):
-                map[key] = value.strip() if len(value.strip()) > 0 else None
-            elif row['Datatype'].startswith('int'):
-                map[key] = int(value) if value.isnumeric() else None
-            elif row['Datatype'].startswith('numeric'):
-                map[key] = int(value) if value.isnumeric() else None
+            if row['Datatype'] is not None:
+                if row['Datatype'].startswith('char'):
+                    map[key] = value.strip() if len(value.strip()) > 0 else None
+                elif row['Datatype'].startswith('int'):
+                    map[key] = int(value) if value.isnumeric() else None
+                elif row['Datatype'].startswith('numeric'):
+                    map[key] = int(value) if value.isnumeric() else None
+            else:
+                map[key] = value.strip()
 
         return map
 
@@ -52,10 +55,8 @@ async def main():
         SELECT
             Field_Name, Datatype, "Start", "End", "Length", Description
         FROM Blueprint b
-        WHERE b.PayloadID = (
-            SELECT p.ID FROM Payload p WHERE p.CountyID = (
-                SELECT ID FROM County c WHERE c.Name = '{'Angelina'}'
-            )
+        WHERE b.CountyID = (
+            SELECT c.ID FROM County c WHERE c.Name = '{'Armstrong'}'
         );''')
 
     Converter(name=CONVERTER, cache=blueprint)

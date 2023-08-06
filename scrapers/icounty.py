@@ -32,11 +32,11 @@ class ICounty:
         """Reads appraisal roll data."""
         pass
 
-    async def save_data(self):
+    async def save_data(self, payload: list):
         """Saves appraisal roll data into mongodb database."""
         pass
 
-    async def extract_files(self):
+    async def extract_files(self, files: list):
         """Extract files from downloased package."""
         pass
 

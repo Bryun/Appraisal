@@ -78,10 +78,9 @@ class SQLite:
         sql: str = f"SELECT ID FROM {table} WHERE {' AND '.join([f'{k} = {v}' for k, v in filter.items()])};"
         return sql
 
-    async def select(self, sql: str) -> tuple:
+    async def select(self, sql: str, parameters: list) -> tuple:
         cursor = self.connection.cursor()
-        print(f"\n{sql}\n")
-        cursor.execute(sql)
+        cursor.execute(sql, parameters)
         row = cursor.fetchone()
         return row
 

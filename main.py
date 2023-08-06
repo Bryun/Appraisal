@@ -1,55 +1,343 @@
-from utils.csv import CSV
-from utils.excel import Excel
-from utils.sqlite import SQLite
 from asyncio import run
-from json import dumps
+
+from pandas import DataFrame
+
+from utils.sqlite import SQLite
 
 
-# COUNTY: str = 'Angelina'
+def Counties() -> DataFrame:
+    headers = ["Name", "URL", "Status"]
+
+    rows = [
+        (
+            "Anderson",
+            "http://www.andersoncad.net/",
+            None,
+        ),
+        ("Andrews", "https://andrewscad.org", None),
+        ("Angelina", "http://www.angelinacad.org/open-records", "Completed"),
+        ("Aransas", "http://www.aransascad.org", None),
+        ("Archer", "https://www.archercad.org/home/DataRecords", "Completed"),
+        ("Armstrong", "https://armstrongcad.org/home/DataRecords", "Completed"),
+        ("Atascosa", "https://atascosacad.com/tax-information", None),
+        ("Austin", "https://austincad.org", None),
+        ("Bailey", "https://bailey-cad.org", None),
+        ("Bandera", "https://bancad.org", None),
+        ("Bastrop", "https://bastropcad.org", None),
+        (
+            "Baylor",
+            "https://iswdataclient.azurewebsites.net/webIndex.aspx?dbkey=BAYLORCAD&time=202208290929050",
+            None,
+        ),
+        ("Bee", "https://www.beecad.org/home/DataRecords", None),
+        ("Bell", "https://bellcad.org", None),
+        ("Bexar", "http://www.bcad.org", None),
+        ("Blanco", "https://blancocad.com/reports-and-plans", None),
+        ("Borden", "https://www.co.borden.tx.us", None),
+        ("Bosque", "https://bosquecad.com", None),
+        ("Bowie", "https://bowieappraisal.com/payments", None),
+        (
+            "Brazoria",
+            "https://www.brazoriacad.org/",
+            None,
+        ),
+        ("Brazos", "https://brazoscad.org/certified-data-downloads", None),
+        ("Brewster", "https://brewstercotad.org", None),
+        ("Briscoe", "https://briscoecad.org/home/DataRecords", None),
+        ("Brooks", "https://brookscad.org", None),
+        ("Brown", "https://brown-cad.org/downloads", None),
+        ("Burleson", "https://burlesonappraisal.com", None),
+        ("Burnet", None, None),
+        ("Caldwell", "https://caldwellcad.org", None),
+        ("Calhoun", "https://calhouncad.org/#", None),
+        ("Callahan", "https://callahancad.org", None),
+        ("Cameron", "http://www.cameroncad.org", None),
+        ("Camp", "https://campcad.org/tax-information", None),
+        ("Carson", "https://carsoncad.org/reports-plans", None),
+        ("Cass", "http://www.casscad.org", None),
+        ("Castro", "https://www.co.castro.tx.us", None),
+        ("Chambers", "http://www.chamberscad.org/open_records.htm", None),
+        ("Cherokee", "http://www.cherokeecad.com", None),
+        ("Childress", "http://www.childresscad.org/open_records.htm", None),
+        ("Clay", "https://www.claycad.org/home/DataRecords", "Complete"),
+        ("Cochran", "https://cochrancad.com/file-downloads", None),
+        ("Coke", "https://www.co.coke.tx.us/page/coke.CAFR", None),
+        (
+            "Coleman",
+            "http://www.colemancountycad.com/appraisal/publicaccess",
+            None,
+        ),
+        (
+            "Collin",
+            "https://www.collincad.org/downloads/viewcategory/42-appraisal-data-exports",
+            None,
+        ),
+        (
+            "Collingsworth",
+            "http://www.collingsworthcad.org/open_records.htm",
+            None,
+        ),
+        ("Colorado", "http://www.coloradocad.org", None),
+        ("Comal", "https://comalad.org/Appraisal-Information", None),
+        ("Comanche", "https://comanchecad.org", None),
+        ("Concho", "https://conchocad.org", None),
+        ("Cooke", "http://www.cookecad.org", None),
+        ("Coryell", "https://coryellcad.org/data-portal", None),
+        ("Cottle", "www.co.cottle.tx.us", None),
+        ("Crane", "https://cranecad.org", None),
+        ("Crockett", "https://www.crockettcad.org/home/DataRecords", "Complete"),
+        ("Crosby", "http://www.crosbycentral.org", None),
+        ("Culberson", "https://www.culbersoncad.org/home/DataRecords", "Complete"),
+        ("Dallam", "https://dallamcad.org", None),
+        ("Dallas", "https://www.dallascad.org/OpenRecords.aspx", None),
+        ("Dawson", "http://www.dawsoncad.org/open_records.htm", None),
+        ("Deaf Smith", "http://www.deafsmithcad.org", None),
+        ("Delta", "https://delta-cad.org", None),
+        (
+            "Denton",
+            "https://www.dentoncounty.gov/850/Appraisal-Districts",
+            None,
+        ),
+        ("DeWitt", "https://www.dewittcad.org/home/DataRecords", "Completed"),
+        ("Dickens", "https://www.dickenscad.org/home/DataRecords", "Completed"),
+        ("Dimmitt", "https://dimmit-cad.org/data-download", None),
+        ("Donley", "http://donleycad.org/open_records.htm", None),
+        ("Duval", "https://duvalcad.org", None),
+        ("Eastland", "http://www.eastlandcad.org/open_records.htm", None),
+        ("Ector", "https://www.ectorcad.org/home/downloads", None),
+        ("Edwards", "https://www.edwardscad.org", None),
+        ("Ellis", "https://www.elliscad.org/appraisal-data-export", None),
+        ("El Paso", "https://epcad.org", None),
+        ("Erath", "https://iswdatacorp.azurewebsites.net", None),
+        ("Falls", None, None),
+        ("Fannin", "https://fannincad.org/ftp", None),
+        ("Fayette", "https://fayettecad.org", None),
+        ("Fisher", "https://fishercad.org/home/DataRecords", "Complete"),
+        ("Floyd", "http://www.myswdata.com", None),
+        ("Foard", "https://foard-cad.org", None),
+        ("Fort Bend", "https://www.fbcad.org", None),
+        ("Franklin", "https://franklin-cad.org/open-records-downloads", None),
+        ("Freestone", "https://freestonecad.org/home/DataRecords", "Complete"),
+        ("Frio", "https://www.friocad.org/home/DataRecords", "Complete"),
+        ("Gaines", "https://gainescad.org", None),
+        ("Galveston", "https://galvestoncad.org", None),
+        ("Garza", "https://garzacad.org/open-records-downloads-2/", None),
+        ("Gillespie", None, None),
+        ("Glasscock", "https://www.glasscockcad.org/home/DataRecords", "Complete"),
+        ("Goliad", "https://goliadcad.org", None),
+        ("Gonzales", "https://www.gonzalescad.org/home/DataRecords", "Complete"),
+        ("Gray", "https://graycad.org/data-downloads", None),
+        ("Grayson", "https://www.graysonappraisal.org", None),
+        ("Gregg", "https://gcad.org/downloads", None),
+        (
+            "Grimes",
+            "https://www.grimescad.org/General-Information/Appraisal-Data/Appraisal-Roll",
+            None,
+        ),
+        ("Guadalupe", "https://guadalupead.org", None),
+        ("Hale", "http://www.halecad.org", None),
+        ("Hall", "http://www.hallcad.org/open_records.htm", None),
+        ("Hamilton", "http://www.hamiltoncad.org", None),
+        ("Hansford", "https://hansfordcad.org/home/DataRecords", "Complete"),
+        ("Hardeman", "https://hardeman-cad.org", None),
+        ("Hardin", "https://hardin-cad.org/data-downloads", None),
+        ("Harris", "https://hcad.org/pdata/pdata-property-downloads.html", None),
+        ("Harrison", None, None),
+        ("Hartley", "https://hartleycad.org", None),
+        ("Haskell", None, None),
+        ("Hays", "https://hayscad.com/", None),
+        ("Hemphill", "https://hemphill-cad.org/", None),
+        ("Henderson", "https://henderson-cad.org", None),
+        ("Hidalgo", "https://hidalgoad.org", None),
+        ("Hill", "https://hillcad.org/download-data", None),
+        ("Hockley", "http://www.hockleycad.org/", None),
+        ("Hood", None, None),
+        ("Hopkins", "http://www.hopkinscad.com", None),
+        ("Houston", "http://www.houstoncad.org/open_records.htm", None),
+        ("Howard", "https://howardcad.org/appraisal-rolls", None),
+        ("Hudspeth", "http://www.hockleycad.org/", None),
+        ("Hunt", "https://hunt-cad.org/mineral-industrial-notices", None),
+        ("Hutchinson", "https://hutchinsoncad.org/open-record-downloads", None),
+        ("Irion", "https://www.irioncad.org/home/DataRecords", None),
+        ("Jack", "https://www.karnescad.org/home/DataRecords", "Complete"),
+        ("Jackson", "https://jacksoncad.org", None),
+        ("Jasper", "http://www.jaspercad.org/", None),
+        ("Jeff Davis", "https://www.jeffdaviscad.org/home/DataRecords", None),
+        ("Jefferson", "https://jcad.org", None),
+        ("Jim Hogg", "http://www42.jimhoggcounty.net", None),
+        ("Jim Wells", "https://jimwellscad.go2gov.net", None),
+        ("Johnson", "http://www.johnsoncad.com", None),
+        ("Jones", "https://www.jonescad.org/home/DataRecords", "Complete"),
+        ("Karnes", "https://www.karnescad.org/home/DataRecords", "Complete"),
+        ("Kaufman", "https://kaufman-cad.org", None),
+        ("Kendall", "https://kendallad.org", None),
+        ("Kenedy", "https://kenedycad.org/", None),
+        ("Kent", "http://www.kentcad.org/open_records.htm", None),
+        ("Kerr", "http://www.kerrcad.org/", None),
+        ("Kimble", "http://www.kimblecad.org/", None),
+        ("King", "https://www.kingcad.org/home/DataRecords", None),
+        ("Kinney", "https://kinneycad.org/", None),
+        ("Kleberg", "https://kleberg-cad.org/", None),
+        ("Knox", "https://knoxcad.com/", None),
+        ("Lamar", "https://lamarcad.org", None),
+        ("Lamb", "https://lambcad.org", None),
+        ("Lampasas", "http://www.lampasascad.org/open_records.htm", None),
+        ("La Salle", "https://www.lasallecad.com/", None),
+        ("Lavaca", None, None),
+        ("Lee", "https://lee-cad.org/appraisal-info", None),
+        ("Leon", "https://www.leoncad.org/home/DataRecords", "Complete"),
+        ("Liberty", "https://libertycad.com/calendar/", None),
+        ("Limestone", "https://limestonecad.com", None),
+        ("Lipscomb", "https://lipscombcad.com/", None),
+        ("Live Oak", "https://liveoakappraisal.com", None),
+        ("Llano", "https://llanocad.net", None),
+        ("Loving", "https://www.lovingcad.org/home/DataRecords", "Complete"),
+        ("Lubbock", "https://lubbockcad.org/", None),
+        ("Lynn", "https://www.lynncad.org/home/DataRecords", "Complete"),
+        ("Madison", "https://madisoncad.org", None),
+        ("Marion", "https://www.marioncad.org/home/DataRecords", None),
+        ("Martin", "http://www.martincad.org/open_records.htm", None),
+        ("Mason", "https://masoncad.org", None),
+        ("Matagorda", "http://www.matagorda-cad.org/", None),
+        ("Maverick", "https://www.maverickcad.org", None),
+        ("McCulloch", "http://www.mccullochcad.org/open_records.htm", None),
+        ("McLennan", "https://mclennancad.org/", None),
+        ("McMullen", "https://mcmullencad.org", None),
+        ("Medina", "https://medinacad.org", None),
+        ("Menard", "http://www.menardcad.org/open_records.htm", None),
+        ("Midland", "https://midcad.org/", None),
+        ("Milam", "https://milamad.org", None),
+        ("Mills", "https://millscad.org", None),
+        ("Mitchell", "http://www.mitchellcad.org/", None),
+        ("Montague", None, None),
+        ("Montgomery", None, None),
+        ("Moore", "https://moorecad.org", None),
+        ("Morris", "https://morriscad.com/open-records-downloads", None),
+        ("Motley", None, None),
+        ("Nacogdoches", "http://www.nacocad.org/open_records.htm", None),
+        ("Navarro", "https://navarrocad.com", None),
+        ("Newton", "http://www.newtoncad.org/", None),
+        ("Nolan", "https://www.nolan-cad.org/home/DataRecords", None),
+        ("Nueces", "http://www.nuecescad.net/", None),
+        ("Ochiltree", "http://www.ochiltreecad.com/open_records.htm", None),
+        ("Oldham", "https://oldhamcad.org/", None),
+        ("Orange", "https://orangecad.net/data-downloads", None),
+        ("Palo Pinto", None, None),
+        ("Panola", "http://www.panolacad.org/open_records.htm", None),
+        (
+            "Parker",
+            "https://iswdataclient.azurewebsites.net/webindex.aspx?dbkey=PARKERCAD&time=202208300324025",
+            None,
+        ),
+        ("Parmer", "https://parmercad.org", None),
+        ("Pecos", "https://pecoscad.org/downloads", None),
+        ("Polk", "https://polkcad.org/open-records", None),
+        ("Potter", "https://www.prad.org", None),
+        ("Presidio", "http://www.presidiocad.org/", None),
+        ("Rains", "https://rainscad.org", None),
+        ("Randall", "https://www.prad.org", None),
+        ("Reagan", "https://www.reagancad.org/home/DataRecords", "Complete"),
+        ("Real", "https://realcad.org", None),
+        ("Red River", "https://rrcad.org/information-to-public", None),
+        ("Reeves", None, None),
+        ("Refugio", "https://www.refugiocad.org/home/DataRecords", "Complete"),
+        ("Roberts", "https://robertscad.org/", None),
+        ("Robertson", "https://robertsoncad.com", None),
+        ("Rockwall", None, None),
+        ("Runnels", "https://runnelscad.org", None),
+        ("Rusk", "http://www.ruskcad.org/open%20records.htm", None),
+        (
+            "Sabine",
+            "https://iswdataclient.azurewebsites.net/webDownloads.aspx?dbkey=SABINECAD&time=202208300341059",
+            None,
+        ),
+        (
+            "San Augustine",
+            "https://www.sanaugustinecad.org/home/DataRecords",
+            "Complete",
+        ),
+        ("San Jacinto", None, None),
+        ("San Patricio", "https://sanpatcad.org/data-downloads", None),
+        ("San Saba", "https://sansabacad.org/home/DataRecords", "Complete"),
+        ("Schleicher", "https://schleichercad.org", None),
+        ("Scurry", "https://scurrytex.com/", None),
+        (
+            "Shackelford",
+            "https://shackelfordcad.com/public-information-request",
+            None,
+        ),
+        ("Shelby", "https://www.shelbycad.com/open-records", None),
+        ("Sherman", "http://www.shermancad.org/open_records.htm", None),
+        ("Smith", "https://www.smithcad.org/", None),
+        ("Somervell", "https://somervellcad.net", None),
+        ("Starr", "https://starrcad.org/", None),
+        ("Stephens", "https://stephenscad.com/open-record-downloads", None),
+        ("Sterling", "https://www.sterlingcad.org/home/DataRecords", "Complete"),
+        ("Stonewall", "http://www.stonewallcad.org/", None),
+        ("Sutton ", "http://www.suttoncad.com/", None),
+        ("Swisher", "http://www.swisher-cad.org/", None),
+        ("Tarrant", "https://www.tad.org/data-download", None),
+        ("Taylor", "https://www.taylor-cad.org/", None),
+        ("Terrell", "http://www.terrellcad.org/", None),
+        ("Terry", "https://terrycoad.org", None),
+        ("Throckmorton", "https://throckmortoncad.org", None),
+        ("Titus", "https://titus-cad.org", None),
+        (
+            "Tom Green",
+            "https://iswdataclient.azurewebsites.net/webindex.aspx?dbkey=TOMGREENCAD&time=202208300406012",
+            None,
+        ),
+        ("Travis", "https://traviscad.org/publicinformation", None),
+        ("Trinity", "https://trinitycad.net/", None),
+        ("Tyler", "http://www.tylercad.net/", None),
+        ("Upshur", "https://upshur-cad.org", None),
+        ("Upton", "http://www.uptoncad.org/open_records.htm", None),
+        ("Uvalde", "https://www.uvaldecad.org/", None),
+        ("Val Verde", "https://www.valverdecad.org/data-downloads", None),
+        ("Van Zandt", "https://vzcad.org", None),
+        ("Victoria", "http://www.victoriacad.org/", None),
+        ("Walker", "https://walkercad.org/", None),
+        ("Waller", "http://www.waller-cad.org/", None),
+        ("Ward", "https://www.wardcad.org/home/DataRecords", "Complete"),
+        ("Washington", None, None),
+        ("Webb", "https://www.webbcad.org/reports", None),
+        ("Wharton", "https://whartoncad.net", None),
+        ("Wheeler", "https://www.wheelercad.org/home/DataRecords", "Complete"),
+        ("Wichita", "https://www.wadtx.com/", None),
+        (
+            "Wilbarger",
+            "https://www.wilbargerappraisal.org/home/DataRecords",
+            "Complete",
+        ),
+        ("Willacy", "https://willacycad.org", None),
+        ("Williamson", "https://www.wcad.org", None),
+        ("Wilson", "https://wilson-cad.org/reports", None),
+        ("Winkler", "http://www.winklercad.org/", None),
+        ("Wise", None, None),
+        ("Wood", "https://www.woodcad.net/open-record-downloads", None),
+        ("Yoakum", "http://www.yoakumcad.org/", None),
+        ("Young", "https://youngcad.org/", None),
+        ("Zapata", "http://zapatacad.com/", None),
+    ]
+
+    return DataFrame(rows, columns=headers)
 
 
-async def main():
-    try:
+data = Counties()
 
-        # collection = await CSV.dictionary('downloads/ARMSTONG CAD 2022 CERTIFIED BPP OPEN RECORDS/layout.csv')
-        collection = await CSV.read('downloads/ARMSTONG CAD 2022 CERTIFIED BPP OPEN RECORDS/layout.csv', delimiter='|')
-        print(dumps(collection, indent=4))
+with open("./README.md", "w") as writer:
+    writer.writelines(data.to_markdown())
 
-        data: list = []
-
-        with SQLite(path='appraisals.db') as sql:
-            result = await sql.select("SELECT ID FROM County c WHERE c.Name = 'Armstrong';")
-            for row in collection:
-                data.append({
-                    'Field_Name': row['DESCRIPTION'],
-                    'Datatype': None,
-                    'Start': row['BEG'],
-                    'End': row['END'],
-                    'Length': row['LENGTH'],
-                    'Description': row['DESCRIPTION'],
-                    'Metadata': {
-                        'DEC': row['DEC'],
-                        'A/N/P': row['A/N/P']
-                    },
-                    'CountyID': result[0][0]
-                })
-
-            await sql.bulk_insert(table='Blueprint', values=data)
-
-        print(dumps(data, indent=4))
-
-        print('Formatted...')
-
-    except Exception as e:
-        print(str(e))
-
-
-async def read():
-    with Excel(location='./resources/County.xlsx') as reader:
-        data = await reader.read(start=('A', 1), end=('C', 255))
-        print(data.to_markdown())
-
-if __name__ == '__main__':
-    run(read())
-
-print('Completed...')
+with SQLite(path="./appraisals.db") as db:
+    for i in data.index:
+        sql = "UPDATE County SET URL = ?, Located = ? WHERE Name = ?;"
+        run(
+            db.insert(
+                sql,
+                [
+                    data["URL"][i],
+                    data["Status"][i] if data["Status"][i] is not None else "null",
+                    data["Name"][i],
+                ],
+            )
+        )

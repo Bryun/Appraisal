@@ -14,6 +14,7 @@ from zipfile import ZipFile
 
 class Angelina(ICounty):
     def __init__(self):
+        super().__init__()
         self.COUNTY: str = "Angelina"
         self.URL: str = ""
         self.DOWNLOADS_DIR = f"D:/Forge/WorkBench/Appraisal/downloads/{self.COUNTY}/"

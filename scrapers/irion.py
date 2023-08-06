@@ -2,12 +2,12 @@ from asyncio import run
 from scrapers.templates.TMDO19U import TMDO19U
 
 
-class Gonzales(TMDO19U):
+class Irion(TMDO19U):
     def __init__(self):
-        super().__init__(county="Gonzales")
+        super().__init__(county="Irion")
 
 
-x = Gonzales()
+x = Irion()
 run(x.download_data())
 run(x.extract_files())
 

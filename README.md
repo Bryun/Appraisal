@@ -1,255 +1,255 @@
-|     | Name              | URL                                                                                            | Located      |
-|----:|:------------------|:-----------------------------------------------------------------------------------------------|:-------------|
-|   0 | 001 Anderson      | http://www.andersoncad.net/Portals/tx-anderson/documents/2022%20Account%20Summary.pdf          | PDF          |
-|   1 | 002 Andrews       |                                                                                                | VPN Required |
-|   2 | 003 Angelina      | http://www.angelinacad.org/open-records                                                        | Completed    |
-|   3 | 004 Aransas       |                                                                                                | VPN Required |
-|   4 | 005 Archer        | https://www.archercad.org/home/DataRecords                                                     | Completed    |
-|   5 | 006 Armstrong     | https://armstrongcad.org/home/DataRecords                                                      | Completed    |
-|   6 | 007 Atascosa      | https://atascosacad.com/tax-information                                                        | Unknown      |
-|   7 | 008 Austin        | https://austincad.org/                                                                         | Unknown      |
-|   8 | 009 Bailey        |                                                                                                | VPN Required |
-|   9 | 010 Bandera       | https://bancad.org/                                                                            | Unknown      |
-|  10 | 011 Bastrop       | https://bastropcad.org/                                                                        | Unknown      |
-|  11 | 012 Baylor        | https://iswdataclient.azurewebsites.net/webIndex.aspx?dbkey=BAYLORCAD&time=202208290929050     | Unknown      |
-|  12 | 013 Bee           | https://www.beecad.org/home/DataRecords                                                        | Potential    |
-|  13 | 014 Bell          | https://bellcad.org/                                                                           | Unknown      |
-|  14 | 015 Bexar         | http://www.bcad.org/                                                                           | Unknown      |
-|  15 | 016 Blanco        | https://blancocad.com/reports-and-plans/                                                       | Potential    |
-|  16 | 017 Borden        | https://www.co.borden.tx.us                                                                    | Unknown      |
-|  17 | 018 Bosque        | https://bosquecad.com/                                                                         | Unknown      |
-|  18 | 019 Bowie         | https://bowieappraisal.com/payments                                                            | Unknown      |
-|  19 | 020 Brazoria      | https://www.brazoriacad.org/tax-roll--gis-downloads.html                                       | Potential    |
-|  20 | 021 Brazos        | https://brazoscad.org/certified-data-downloads/                                                | Potential    |
-|  21 | 022 Brewster      |                                                                                                | VPN Required |
-|  22 | 023 Briscoe       | https://briscoecad.org/home/DataRecords                                                        | Incomplete   |
-|  23 | 024 Brooks        |                                                                                                | VPN Required |
-|  24 | 025 Brown         | https://brown-cad.org/downloads/                                                               | Potential    |
-|  25 | 026 Burleson      | https://burlesonappraisal.com/                                                                 | Unknown      |
-|  26 | 027 Burnet        |                                                                                                | VPN Required |
-|  27 | 028 Caldwell      |                                                                                                | VPN Required |
-|  28 | 029 Calhoun       |                                                                                                | VPN Required |
-|  29 | 030 Callahan      | https://callahancad.org/                                                                       | Unknown      |
-|  30 | 031 Cameron       | http://www.cameroncad.org/                                                                     | Potential    |
-|  31 | 032 Camp          | https://campcad.org/tax-information/                                                           | Potential    |
-|  32 | 033 Carson        | https://carsoncad.org/reports-plans/                                                           | Potential    |
-|  33 | 034 Cass          |                                                                                                | VPN Required |
-|  34 | 035 Castro        | https://www.co.castro.tx.us/                                                                   | Unknown      |
-|  35 | 036 Chambers      | http://www.chamberscad.org/open_records.htm                                                    | Potential    |
-|  36 | 037 Cherokee      |                                                                                                | VPN Required |
-|  37 | 038 Childress     | http://www.childresscad.org/open_records.htm                                                   | Potential    |
-|  38 | 039 Clay          | https://www.claycad.org/home/DataRecords                                                       | Complete     |
-|  39 | 040 Cochran       | https://cochrancad.com/file-downloads                                                          | Potential    |
-|  40 | 041 Coke          | https://www.co.coke.tx.us/page/coke.CAFR                                                       | Unknown      |
-|  41 | 042 Coleman       | http://www.colemancountycad.com/appraisal/publicaccess/                                        | Unknown      |
-|  42 | 043 Collin        | https://www.collincad.org/downloads/viewcategory/42-appraisal-data-exports                     | Potential    |
-|  43 | 044 Collingsworth | http://www.collingsworthcad.org/open_records.htm                                               | Potential    |
-|  44 | 045 Colorado      |                                                                                                | VPN Required |
-|  45 | 046 Comal         |                                                                                                | VPN Required |
-|  46 | 047 Comanche      | https://comanchecad.org/                                                                       | Unknown      |
-|  47 | 048 Concho        | https://conchocad.org/                                                                         | Unknown      |
-|  48 | 049 Cooke         |                                                                                                | VPN Required |
-|  49 | 050 Coryell       | https://coryellcad.org/data-portal/                                                            | Potential    |
-|  50 | 051 Cottle        | www.co.cottle.tx.us                                                                            | Unknown      |
-|  51 | 052 Crane         | https://cranecad.org/                                                                          | Unknown      |
-|  52 | 053 Crockett      | https://www.crockettcad.org/home/DataRecords                                                   | Complete     |
-|  53 | 054 Crosby        | http://www.crosbycentral.org/                                                                  | Unknown      |
-|  54 | 055 Culberson     | https://www.culbersoncad.org/home/DataRecords                                                  | Complete     |
-|  55 | 056 Dallam        | https://dallamcad.org/                                                                         | Unknown      |
-|  56 | 057 Dallas        | https://www.dallascad.org/OpenRecords.aspx                                                     | Unknown      |
-|  57 | 058 Dawson        | http://www.dawsoncad.org/open_records.htm                                                      | Potential    |
-|  58 | 059 Deaf Smith    |                                                                                                | VPN Required |
-|  59 | 060 Delta         | https://delta-cad.org/                                                                         | Unknown      |
-|  60 | 061 Denton        |                                                                                                | VPN Required |
-|  61 | 062 DeWitt        | https://www.dewittcad.org/home/DataRecords                                                     | Completed    |
-|  62 | 063 Dickens       | https://www.dickenscad.org/home/DataRecords                                                    | Completed    |
-|  63 | 064 Dimmitt       | https://dimmit-cad.org/data-download/                                                          | Potential    |
-|  64 | 065 Donley        | http://donleycad.org/open_records.htm                                                          | Potential    |
-|  65 | 066 Duval         | https://duvalcad.org/                                                                          | Potential    |
-|  66 | 067 Eastland      | http://www.eastlandcad.org/open_records.htm                                                    | Potential    |
-|  67 | 068 Ector         | https://www.ectorcad.org/home/downloads                                                        | Potential    |
-|  68 | 069 Edwards       | https://www.edwardscad.org/                                                                    | Potential    |
-|  69 | 070 Ellis         | https://www.elliscad.org/appraisal-data-export                                                 | Potential    |
-|  70 | 071 El Paso       | https://epcad.org/                                                                             | Unknown      |
-|  71 | 072 Erath         | https://iswdatacorp.azurewebsites.net/                                                         | Unknown      |
-|  72 | 073 Falls         |                                                                                                | VPN Required |
-|  73 | 074 Fannin        | https://fannincad.org/ftp                                                                      | Unknown      |
-|  74 | 075 Fayette       | https://fayettecad.org/                                                                        | Unknown      |
-|  75 | 076 Fisher        | https://fishercad.org/home/DataRecords                                                         | Complete     |
-|  76 | 077 Floyd         | http://www.myswdata.com/                                                                       | Unknown      |
-|  77 | 078 Foard         |                                                                                                | Unknown      |
-|  78 | 079 Fort Bend     |                                                                                                | Unknown      |
-|  79 | 080 Franklin      | https://franklin-cad.org/open-records-downloads/                                               | Potential    |
-|  80 | 081 Freestone     | https://freestonecad.org/home/DataRecords                                                      | Complete     |
-|  81 | 082 Frio          | https://www.friocad.org/home/DataRecords                                                       | Complete     |
-|  82 | 083 Gaines        | https://gainescad.org/                                                                         | Unknown      |
-|  83 | 084 Galveston     |                                                                                                | VPN Required |
-|  84 | 085 Garza         | https://garzacad.org/open-records-downloads-2/                                                 | PDF          |
-|  85 | 086 Gillespie     |                                                                                                | VPN Required |
-|  86 | 087 Glasscock     | https://www.glasscockcad.org/home/DataRecords                                                  | Complete     |
-|  87 | 088 Goliad        |                                                                                                | VPN Required |
-|  88 | 089 Gonzales      | https://www.gonzalescad.org/home/DataRecords                                                   | Complete     |
-|  89 | 090 Gray          | https://graycad.org/data-downloads/                                                            | Potential    |
-|  90 | 091 Grayson       |                                                                                                | VPN Required |
-|  91 | 092 Gregg         | https://gcad.org/downloads/                                                                    | Potential    |
-|  92 | 093 Grimes        | https://www.grimescad.org/General-Information/Appraisal-Data/Appraisal-Roll                    | Potential    |
-|  93 | 094 Guadalupe     |                                                                                                | VPN Required |
-|  94 | 095 Hale          |                                                                                                | VPN Required |
-|  95 | 096 Hall          | http://www.hallcad.org/open_records.htm                                                        | Potential    |
-|  96 | 097 Hamilton      |                                                                                                | VPN Required |
-|  97 | 098 Hansford      | https://hansfordcad.org/home/DataRecords                                                       | Complete     |
-|  98 | 099 Hardeman      | https://hardeman-cad.org/                                                                      | Unknown      |
-|  99 | 100 Hardin        | https://hardin-cad.org/data-downloads/                                                         | Potential    |
-| 100 | 101 Harris        | https://hcad.org/pdata/pdata-property-downloads.html                                           | Potential    |
-| 101 | 102 Harrison      |                                                                                                | Unknown      |
-| 102 | 103 Hartley       | https://hartleycad.org/                                                                        | Unknown      |
-| 103 | 104 Haskell       |                                                                                                | VPN Required |
-| 104 | 105 Hays          |                                                                                                | VPN Required |
-| 105 | 106 Hemphill      |                                                                                                | Unknown      |
-| 106 | 107 Henderson     | https://henderson-cad.org/                                                                     | Unknown      |
-| 107 | 108 Hidalgo       | https://hidalgoad.org/                                                                         | Unknown      |
-| 108 | 109 Hill          | https://hillcad.org/download-data/                                                             | Potential    |
-| 109 | 110 Hockley       |                                                                                                | VPN Required |
-| 110 | 111 Hood          | hoodcad.net                                                                                    | Unknown      |
-| 111 | 112 Hopkins       | http://www.hopkinscad.com/                                                                     | Unknown      |
-| 112 | 113 Houston       | http://www.houstoncad.org/open_records.htm                                                     | Potential    |
-| 113 | 114 Howard        | https://howardcad.org/appraisal-rolls/                                                         | Potential    |
-| 114 | 115 Hudspeth      |                                                                                                | VPN Required |
-| 115 | 116 Hunt          | https://hunt-cad.org/mineral-industrial-notices/                                               | Unknown      |
-| 116 | 117 Hutchinson    | https://hutchinsoncad.org/open-record-downloads/                                               | Potential    |
-| 117 | 118 Irion         |                                                                                                | VPN Required |
-| 118 | 119 Jack          | https://www.karnescad.org/home/DataRecords                                                     | Complete     |
-| 119 | 120 Jackson       | https://jacksoncad.org                                                                         | Unknown      |
-| 120 | 121 Jasper        |                                                                                                | VPN Required |
-| 121 | 122 Jeff Davis    | https://www.jeffdaviscad.org/home/DataRecords                                                  | Incomplete   |
-| 122 | 123 Jefferson     | https://jcad.org/                                                                              | Unknown      |
-| 123 | 124 Jim Hogg      | http://www42.jimhoggcounty.net/                                                                | Unknown      |
-| 124 | 125 Jim Wells     | https://jimwellscad.go2gov.net/                                                                | Unknown      |
-| 125 | 126 Johnson       | http://www.johnsoncad.com/                                                                     | Unknown      |
-| 126 | 127 Jones         | https://www.jonescad.org/home/DataRecords                                                      | Complete     |
-| 127 | 128 Karnes        | https://www.karnescad.org/home/DataRecords                                                     | Complete     |
-| 128 | 129 Kaufman       | https://kaufman-cad.org/                                                                       | Unknown      |
-| 129 | 130 Kendall       | https://kendallad.org/                                                                         | Unknown      |
-| 130 | 131 Kenedy        | kenedycad.com                                                                                  | Unknown      |
-| 131 | 132 Kent          | http://www.kentcad.org/open_records.htm                                                        | Potential    |
-| 132 | 133 Kerr          |                                                                                                | VPN Required |
-| 133 | 134 Kimble        |                                                                                                | VPN Required |
-| 134 | 135 King          |                                                                                                | Unknown      |
-| 135 | 136 Kinney        |                                                                                                | VPN Required |
-| 136 | 137 Kleberg       |                                                                                                | VPN Required |
-| 137 | 138 Knox          |                                                                                                | Unknown      |
-| 138 | 139 Lamar         | https://lamarcad.org/                                                                          | Unknown      |
-| 139 | 140 Lamb          | https://lambcad.org/                                                                           | Unknown      |
-| 140 | 141 Lampasas      | http://www.lampasascad.org/open_records.htm                                                    | Potential    |
-| 141 | 142 La Salle      |                                                                                                | VPN Required |
-| 142 | 143 Lavaca        |                                                                                                | VPN Required |
-| 143 | 144 Lee           | https://lee-cad.org/appraisal-info/                                                            | Unknown      |
-| 144 | 145 Leon          | https://www.leoncad.org/home/DataRecords                                                       | Complete     |
-| 145 | 146 Liberty       |                                                                                                | VPN Required |
-| 146 | 147 Limestone     | https://limestonecad.com/                                                                      | Unknown      |
-| 147 | 148 Lipscomb      |                                                                                                | Unknown      |
-| 148 | 149 Live Oak      | https://liveoakappraisal.com/                                                                  | Unknown      |
-| 149 | 150 Llano         | https://llanocad.net/                                                                          | Potential    |
-| 150 | 151 Loving        | https://www.lovingcad.org/home/DataRecords                                                     | Complete     |
-| 151 | 152 Lubbock       |                                                                                                | VPN Required |
-| 152 | 153 Lynn          | https://www.lynncad.org/home/DataRecords                                                       | Complete     |
-| 153 | 154 Madison       | https://madisoncad.org/                                                                        | Unknown      |
-| 154 | 155 Marion        | https://www.marioncad.org/home/DataRecords                                                     | Potential    |
-| 155 | 156 Martin        | http://www.martincad.org/open_records.htm                                                      | Potential    |
-| 156 | 157 Mason         | https://masoncad.org/                                                                          | Unknown      |
-| 157 | 158 Matagorda     |                                                                                                | VPN Required |
-| 158 | 159 Maverick      | https://www.maverickcad.org/                                                                   | Unknown      |
-| 159 | 160 McCulloch     | http://www.mccullochcad.org/open_records.htm                                                   | Potential    |
-| 160 | 161 McLennan      |                                                                                                | VPN Required |
-| 161 | 162 McMullen      | https://mcmullencad.org/                                                                       | Unknown      |
-| 162 | 163 Medina        | https://medinacad.org/                                                                         | Unknown      |
-| 163 | 164 Menard        | http://www.menardcad.org/open_records.htm                                                      | Potential    |
-| 164 | 165 Midland       |                                                                                                | Unknown      |
-| 165 | 166 Milam         | https://milamad.org/                                                                           | Unknown      |
-| 166 | 167 Mills         | https://millscad.org/                                                                          | Unknown      |
-| 167 | 168 Mitchell      |                                                                                                | VPN Required |
-| 168 | 169 Montague      |                                                                                                | VPN Required |
-| 169 | 170 Montgomery    |                                                                                                | VPN Required |
-| 170 | 171 Moore         | https://moorecad.org/                                                                          | Unknown      |
-| 171 | 172 Morris        | https://morriscad.com/open-records-downloads/                                                  | Potential    |
-| 172 | 173 Motley        |                                                                                                | Unknown      |
-| 173 | 174 Nacogdoches   | http://www.nacocad.org/open_records.htm                                                        | Potential    |
-| 174 | 175 Navarro       | https://navarrocad.com/                                                                        | Unknown      |
-| 175 | 176 Newton        |                                                                                                | VPN Required |
-| 176 | 177 Nolan         | http://www.nolan-cad.org/open_records.htm                                                      | Potential    |
-| 177 | 178 Nueces        |                                                                                                | VPN Required |
-| 178 | 179 Ochiltree     | http://www.ochiltreecad.com/open_records.htm                                                   | Potential    |
-| 179 | 180 Oldham        |                                                                                                | Unknown      |
-| 180 | 181 Orange        | https://orangecad.net/data-downloads/                                                          | Potential    |
-| 181 | 182 Palo Pinto    |                                                                                                | Unknown      |
-| 182 | 183 Panola        | http://www.panolacad.org/open_records.htm                                                      | Potential    |
-| 183 | 184 Parker        | https://iswdataclient.azurewebsites.net/webindex.aspx?dbkey=PARKERCAD&time=202208300324025     | Unknown      |
-| 184 | 185 Parmer        | https://parmercad.org/                                                                         | Potential    |
-| 185 | 186 Pecos         | https://pecoscad.org/downloads/                                                                | Potential    |
-| 186 | 187 Polk          | https://polkcad.org/open-records                                                               | Potential    |
-| 187 | 188 Potter        | https://www.prad.org/                                                                          | Unknown      |
-| 188 | 189 Presidio      |                                                                                                | VPN Required |
-| 189 | 190 Rains         | https://rainscad.org/                                                                          | Unknown      |
-| 190 | 191 Randall       | https://www.prad.org/                                                                          | Unknown      |
-| 191 | 192 Reagan        | http://www.reagancad.org/open_records.htm                                                      | Potential    |
-| 192 | 193 Real          | https://realcad.org/                                                                           | Unknown      |
-| 193 | 194 Red River     | https://rrcad.org/information-to-public                                                        | VPN Required |
-| 194 | 195 Reeves        |                                                                                                | VPN Required |
-| 195 | 196 Refugio       | http://www.refugiocad.org/open_records.htm                                                     | Potential    |
-| 196 | 197 Roberts       |                                                                                                | Unknown      |
-| 197 | 198 Robertson     | https://robertsoncad.com/                                                                      | Unknown      |
-| 198 | 199 Rockwall      |                                                                                                | VPN Required |
-| 199 | 200 Runnels       | https://runnelscad.org/                                                                        | Unknown      |
-| 200 | 201 Rusk          | http://www.ruskcad.org/open%20records.htm                                                      | Potential    |
-| 201 | 202 Sabine        | https://iswdataclient.azurewebsites.net/webDownloads.aspx?dbkey=SABINECAD&time=202208300341059 | Potential    |
-| 202 | 203 San Augustine | http://www.sanaugustinecad.org/open_records.htm                                                | Potential    |
-| 203 | 204 San Jacinto   |                                                                                                | VPN Required |
-| 204 | 205 San Patricio  | https://sanpatcad.org/data-downloads/                                                          | Potential    |
-| 205 | 206 San Saba      | https://sansabacad.org/                                                                        | Unknown      |
-| 206 | 207 Schleicher    | https://schleichercad.org/                                                                     | Potential    |
-| 207 | 208 Scurry        |                                                                                                | VPN Required |
-| 208 | 209 Shackelford   | https://shackelfordcad.com/public-information-request                                          | Potential    |
-| 209 | 210 Shelby        | https://www.shelbycad.com/open-records                                                         | Potential    |
-| 210 | 211 Sherman       | http://www.shermancad.org/open_records.htm                                                     | Potential    |
-| 211 | 212 Smith         |                                                                                                | VPN Required |
-| 212 | 213 Somervell     | https://somervellcad.net/                                                                      | Unknown      |
-| 213 | 214 Starr         |                                                                                                | VPN Required |
-| 214 | 215 Stephens      | https://stephenscad.com/open-record-downloads/                                                 | Potential    |
-| 215 | 216 Sterling      | http://www.sterlingcad.org/open_records.htm                                                    | Potential    |
-| 216 | 217 Stonewall     |                                                                                                | Unknown      |
-| 217 | 218 Sutton        |                                                                                                | VPN Required |
-| 218 | 219 Swisher       |                                                                                                | VPN Required |
-| 219 | 220 Tarrant       | https://www.tad.org/data-download/                                                             | Potential    |
-| 220 | 221 Taylor        |                                                                                                | VPN Required |
-| 221 | 222 Terrell       |                                                                                                | VPN Required |
-| 222 | 223 Terry         | https://terrycoad.org/                                                                         | Unknown      |
-| 223 | 224 Throckmorton  | https://throckmortoncad.org/                                                                   | Unknown      |
-| 224 | 225 Titus         | https://titus-cad.org/                                                                         | Unknown      |
-| 225 | 226 Tom Green     | https://iswdataclient.azurewebsites.net/webindex.aspx?dbkey=TOMGREENCAD&time=202208300406012   | Unknown      |
-| 226 | 227 Travis        | https://traviscad.org/publicinformation                                                        | Potential    |
-| 227 | 228 Trinity       |                                                                                                | VPN Required |
-| 228 | 229 Tyler         |                                                                                                | VPN Required |
-| 229 | 230 Upshur        | https://upshur-cad.org/                                                                        | Unknown      |
-| 230 | 231 Upton         | http://www.uptoncad.org/open_records.htm                                                       | Potential    |
-| 231 | 232 Uvalde        |                                                                                                | VPN Required |
-| 232 | 233 Val Verde     | https://www.valverdecad.org/data-downloads                                                     | Potential    |
-| 233 | 234 Van Zandt     | https://vzcad.org/                                                                             | Potential    |
-| 234 | 235 Victoria      |                                                                                                | VPN Required |
-| 235 | 236 Walker        |                                                                                                | VPN Required |
-| 236 | 237 Waller        |                                                                                                | VPN Required |
-| 237 | 238 Ward          | http://www.wardcad.org/open_records.htm                                                        | Potential    |
-| 238 | 239 Washington    |                                                                                                | Unknown      |
-| 239 | 240 Webb          | https://www.webbcad.org/reports                                                                | Potential    |
-| 240 | 241 Wharton       | https://whartoncad.net/                                                                        | Unknown      |
-| 241 | 242 Wheeler       | http://www.wheelercad.org/open_records.htm                                                     | Potential    |
-| 242 | 243 Wichita       |                                                                                                | VPN Required |
-| 243 | 244 Wilbarger     | http://www.wilbargerappraisal.org/open_records.htm                                             | Potential    |
-| 244 | 245 Willacy       | https://willacycad.org/                                                                        | Unknown      |
-| 245 | 246 Williamson    | https://www.wcad.org/                                                                          | Unknown      |
-| 246 | 247 Wilson        | https://wilson-cad.org/reports                                                                 | Potential    |
-| 247 | 248 Winkler       |                                                                                                | VPN Required |
-| 248 | 249 Wise          |                                                                                                | VPN Required |
-| 249 | 250 Wood          | https://www.woodcad.net/open-record-downloads/                                                 | Potential    |
-| 250 | 251 Yoakum        |                                                                                                | Unknown      |
-| 251 | 252 Young         |                                                                                                | VPN Required |
-| 252 | 253 Zapata        |                                                                                                | VPN Required |
+|     | Name          | URL                                                                                            | Status    |
+|----:|:--------------|:-----------------------------------------------------------------------------------------------|:----------|
+|   0 | Anderson      | http://www.andersoncad.net/                                                                    |           |
+|   1 | Andrews       | https://andrewscad.org                                                                         |           |
+|   2 | Angelina      | http://www.angelinacad.org/open-records                                                        | Completed |
+|   3 | Aransas       | http://www.aransascad.org                                                                      |           |
+|   4 | Archer        | https://www.archercad.org/home/DataRecords                                                     | Completed |
+|   5 | Armstrong     | https://armstrongcad.org/home/DataRecords                                                      | Completed |
+|   6 | Atascosa      | https://atascosacad.com/tax-information                                                        |           |
+|   7 | Austin        | https://austincad.org                                                                          |           |
+|   8 | Bailey        | https://bailey-cad.org                                                                         |           |
+|   9 | Bandera       | https://bancad.org                                                                             |           |
+|  10 | Bastrop       | https://bastropcad.org                                                                         |           |
+|  11 | Baylor        | https://iswdataclient.azurewebsites.net/webIndex.aspx?dbkey=BAYLORCAD&time=202208290929050     |           |
+|  12 | Bee           | https://www.beecad.org/home/DataRecords                                                        |           |
+|  13 | Bell          | https://bellcad.org                                                                            |           |
+|  14 | Bexar         | http://www.bcad.org                                                                            |           |
+|  15 | Blanco        | https://blancocad.com/reports-and-plans                                                        |           |
+|  16 | Borden        | https://www.co.borden.tx.us                                                                    |           |
+|  17 | Bosque        | https://bosquecad.com                                                                          |           |
+|  18 | Bowie         | https://bowieappraisal.com/payments                                                            |           |
+|  19 | Brazoria      | https://www.brazoriacad.org/                                                                   |           |
+|  20 | Brazos        | https://brazoscad.org/certified-data-downloads                                                 |           |
+|  21 | Brewster      | https://brewstercotad.org                                                                      |           |
+|  22 | Briscoe       | https://briscoecad.org/home/DataRecords                                                        |           |
+|  23 | Brooks        | https://brookscad.org                                                                          |           |
+|  24 | Brown         | https://brown-cad.org/downloads                                                                |           |
+|  25 | Burleson      | https://burlesonappraisal.com                                                                  |           |
+|  26 | Burnet        |                                                                                                |           |
+|  27 | Caldwell      | https://caldwellcad.org                                                                        |           |
+|  28 | Calhoun       | https://calhouncad.org/#                                                                       |           |
+|  29 | Callahan      | https://callahancad.org                                                                        |           |
+|  30 | Cameron       | http://www.cameroncad.org                                                                      |           |
+|  31 | Camp          | https://campcad.org/tax-information                                                            |           |
+|  32 | Carson        | https://carsoncad.org/reports-plans                                                            |           |
+|  33 | Cass          | http://www.casscad.org                                                                         |           |
+|  34 | Castro        | https://www.co.castro.tx.us                                                                    |           |
+|  35 | Chambers      | http://www.chamberscad.org/open_records.htm                                                    |           |
+|  36 | Cherokee      | http://www.cherokeecad.com                                                                     |           |
+|  37 | Childress     | http://www.childresscad.org/open_records.htm                                                   |           |
+|  38 | Clay          | https://www.claycad.org/home/DataRecords                                                       | Complete  |
+|  39 | Cochran       | https://cochrancad.com/file-downloads                                                          |           |
+|  40 | Coke          | https://www.co.coke.tx.us/page/coke.CAFR                                                       |           |
+|  41 | Coleman       | http://www.colemancountycad.com/appraisal/publicaccess                                         |           |
+|  42 | Collin        | https://www.collincad.org/downloads/viewcategory/42-appraisal-data-exports                     |           |
+|  43 | Collingsworth | http://www.collingsworthcad.org/open_records.htm                                               |           |
+|  44 | Colorado      | http://www.coloradocad.org                                                                     |           |
+|  45 | Comal         | https://comalad.org/Appraisal-Information                                                      |           |
+|  46 | Comanche      | https://comanchecad.org                                                                        |           |
+|  47 | Concho        | https://conchocad.org                                                                          |           |
+|  48 | Cooke         | http://www.cookecad.org                                                                        |           |
+|  49 | Coryell       | https://coryellcad.org/data-portal                                                             |           |
+|  50 | Cottle        | www.co.cottle.tx.us                                                                            |           |
+|  51 | Crane         | https://cranecad.org                                                                           |           |
+|  52 | Crockett      | https://www.crockettcad.org/home/DataRecords                                                   | Complete  |
+|  53 | Crosby        | http://www.crosbycentral.org                                                                   |           |
+|  54 | Culberson     | https://www.culbersoncad.org/home/DataRecords                                                  | Complete  |
+|  55 | Dallam        | https://dallamcad.org                                                                          |           |
+|  56 | Dallas        | https://www.dallascad.org/OpenRecords.aspx                                                     |           |
+|  57 | Dawson        | http://www.dawsoncad.org/open_records.htm                                                      |           |
+|  58 | Deaf Smith    | http://www.deafsmithcad.org                                                                    |           |
+|  59 | Delta         | https://delta-cad.org                                                                          |           |
+|  60 | Denton        | https://www.dentoncounty.gov/850/Appraisal-Districts                                           |           |
+|  61 | DeWitt        | https://www.dewittcad.org/home/DataRecords                                                     | Completed |
+|  62 | Dickens       | https://www.dickenscad.org/home/DataRecords                                                    | Completed |
+|  63 | Dimmitt       | https://dimmit-cad.org/data-download                                                           |           |
+|  64 | Donley        | http://donleycad.org/open_records.htm                                                          |           |
+|  65 | Duval         | https://duvalcad.org                                                                           |           |
+|  66 | Eastland      | http://www.eastlandcad.org/open_records.htm                                                    |           |
+|  67 | Ector         | https://www.ectorcad.org/home/downloads                                                        |           |
+|  68 | Edwards       | https://www.edwardscad.org                                                                     |           |
+|  69 | Ellis         | https://www.elliscad.org/appraisal-data-export                                                 |           |
+|  70 | El Paso       | https://epcad.org                                                                              |           |
+|  71 | Erath         | https://iswdatacorp.azurewebsites.net                                                          |           |
+|  72 | Falls         |                                                                                                |           |
+|  73 | Fannin        | https://fannincad.org/ftp                                                                      |           |
+|  74 | Fayette       | https://fayettecad.org                                                                         |           |
+|  75 | Fisher        | https://fishercad.org/home/DataRecords                                                         | Complete  |
+|  76 | Floyd         | http://www.myswdata.com                                                                        |           |
+|  77 | Foard         | https://foard-cad.org                                                                          |           |
+|  78 | Fort Bend     | https://www.fbcad.org                                                                          |           |
+|  79 | Franklin      | https://franklin-cad.org/open-records-downloads                                                |           |
+|  80 | Freestone     | https://freestonecad.org/home/DataRecords                                                      | Complete  |
+|  81 | Frio          | https://www.friocad.org/home/DataRecords                                                       | Complete  |
+|  82 | Gaines        | https://gainescad.org                                                                          |           |
+|  83 | Galveston     | https://galvestoncad.org                                                                       |           |
+|  84 | Garza         | https://garzacad.org/open-records-downloads-2/                                                 |           |
+|  85 | Gillespie     |                                                                                                |           |
+|  86 | Glasscock     | https://www.glasscockcad.org/home/DataRecords                                                  | Complete  |
+|  87 | Goliad        | https://goliadcad.org                                                                          |           |
+|  88 | Gonzales      | https://www.gonzalescad.org/home/DataRecords                                                   | Complete  |
+|  89 | Gray          | https://graycad.org/data-downloads                                                             |           |
+|  90 | Grayson       | https://www.graysonappraisal.org                                                               |           |
+|  91 | Gregg         | https://gcad.org/downloads                                                                     |           |
+|  92 | Grimes        | https://www.grimescad.org/General-Information/Appraisal-Data/Appraisal-Roll                    |           |
+|  93 | Guadalupe     | https://guadalupead.org                                                                        |           |
+|  94 | Hale          | http://www.halecad.org                                                                         |           |
+|  95 | Hall          | http://www.hallcad.org/open_records.htm                                                        |           |
+|  96 | Hamilton      | http://www.hamiltoncad.org                                                                     |           |
+|  97 | Hansford      | https://hansfordcad.org/home/DataRecords                                                       | Complete  |
+|  98 | Hardeman      | https://hardeman-cad.org                                                                       |           |
+|  99 | Hardin        | https://hardin-cad.org/data-downloads                                                          |           |
+| 100 | Harris        | https://hcad.org/pdata/pdata-property-downloads.html                                           |           |
+| 101 | Harrison      |                                                                                                |           |
+| 102 | Hartley       | https://hartleycad.org                                                                         |           |
+| 103 | Haskell       |                                                                                                |           |
+| 104 | Hays          | https://hayscad.com/                                                                           |           |
+| 105 | Hemphill      | https://hemphill-cad.org/                                                                      |           |
+| 106 | Henderson     | https://henderson-cad.org                                                                      |           |
+| 107 | Hidalgo       | https://hidalgoad.org                                                                          |           |
+| 108 | Hill          | https://hillcad.org/download-data                                                              |           |
+| 109 | Hockley       | http://www.hockleycad.org/                                                                     |           |
+| 110 | Hood          |                                                                                                |           |
+| 111 | Hopkins       | http://www.hopkinscad.com                                                                      |           |
+| 112 | Houston       | http://www.houstoncad.org/open_records.htm                                                     |           |
+| 113 | Howard        | https://howardcad.org/appraisal-rolls                                                          |           |
+| 114 | Hudspeth      | http://www.hockleycad.org/                                                                     |           |
+| 115 | Hunt          | https://hunt-cad.org/mineral-industrial-notices                                                |           |
+| 116 | Hutchinson    | https://hutchinsoncad.org/open-record-downloads                                                |           |
+| 117 | Irion         | https://www.irioncad.org/home/DataRecords                                                      |           |
+| 118 | Jack          | https://www.karnescad.org/home/DataRecords                                                     | Complete  |
+| 119 | Jackson       | https://jacksoncad.org                                                                         |           |
+| 120 | Jasper        | http://www.jaspercad.org/                                                                      |           |
+| 121 | Jeff Davis    | https://www.jeffdaviscad.org/home/DataRecords                                                  |           |
+| 122 | Jefferson     | https://jcad.org                                                                               |           |
+| 123 | Jim Hogg      | http://www42.jimhoggcounty.net                                                                 |           |
+| 124 | Jim Wells     | https://jimwellscad.go2gov.net                                                                 |           |
+| 125 | Johnson       | http://www.johnsoncad.com                                                                      |           |
+| 126 | Jones         | https://www.jonescad.org/home/DataRecords                                                      | Complete  |
+| 127 | Karnes        | https://www.karnescad.org/home/DataRecords                                                     | Complete  |
+| 128 | Kaufman       | https://kaufman-cad.org                                                                        |           |
+| 129 | Kendall       | https://kendallad.org                                                                          |           |
+| 130 | Kenedy        | https://kenedycad.org/                                                                         |           |
+| 131 | Kent          | http://www.kentcad.org/open_records.htm                                                        |           |
+| 132 | Kerr          | http://www.kerrcad.org/                                                                        |           |
+| 133 | Kimble        | http://www.kimblecad.org/                                                                      |           |
+| 134 | King          | https://www.kingcad.org/home/DataRecords                                                       |           |
+| 135 | Kinney        | https://kinneycad.org/                                                                         |           |
+| 136 | Kleberg       | https://kleberg-cad.org/                                                                       |           |
+| 137 | Knox          | https://knoxcad.com/                                                                           |           |
+| 138 | Lamar         | https://lamarcad.org                                                                           |           |
+| 139 | Lamb          | https://lambcad.org                                                                            |           |
+| 140 | Lampasas      | http://www.lampasascad.org/open_records.htm                                                    |           |
+| 141 | La Salle      | https://www.lasallecad.com/                                                                    |           |
+| 142 | Lavaca        |                                                                                                |           |
+| 143 | Lee           | https://lee-cad.org/appraisal-info                                                             |           |
+| 144 | Leon          | https://www.leoncad.org/home/DataRecords                                                       | Complete  |
+| 145 | Liberty       | https://libertycad.com/calendar/                                                               |           |
+| 146 | Limestone     | https://limestonecad.com                                                                       |           |
+| 147 | Lipscomb      | https://lipscombcad.com/                                                                       |           |
+| 148 | Live Oak      | https://liveoakappraisal.com                                                                   |           |
+| 149 | Llano         | https://llanocad.net                                                                           |           |
+| 150 | Loving        | https://www.lovingcad.org/home/DataRecords                                                     | Complete  |
+| 151 | Lubbock       | https://lubbockcad.org/                                                                        |           |
+| 152 | Lynn          | https://www.lynncad.org/home/DataRecords                                                       | Complete  |
+| 153 | Madison       | https://madisoncad.org                                                                         |           |
+| 154 | Marion        | https://www.marioncad.org/home/DataRecords                                                     |           |
+| 155 | Martin        | http://www.martincad.org/open_records.htm                                                      |           |
+| 156 | Mason         | https://masoncad.org                                                                           |           |
+| 157 | Matagorda     | http://www.matagorda-cad.org/                                                                  |           |
+| 158 | Maverick      | https://www.maverickcad.org                                                                    |           |
+| 159 | McCulloch     | http://www.mccullochcad.org/open_records.htm                                                   |           |
+| 160 | McLennan      | https://mclennancad.org/                                                                       |           |
+| 161 | McMullen      | https://mcmullencad.org                                                                        |           |
+| 162 | Medina        | https://medinacad.org                                                                          |           |
+| 163 | Menard        | http://www.menardcad.org/open_records.htm                                                      |           |
+| 164 | Midland       | https://midcad.org/                                                                            |           |
+| 165 | Milam         | https://milamad.org                                                                            |           |
+| 166 | Mills         | https://millscad.org                                                                           |           |
+| 167 | Mitchell      | http://www.mitchellcad.org/                                                                    |           |
+| 168 | Montague      |                                                                                                |           |
+| 169 | Montgomery    |                                                                                                |           |
+| 170 | Moore         | https://moorecad.org                                                                           |           |
+| 171 | Morris        | https://morriscad.com/open-records-downloads                                                   |           |
+| 172 | Motley        |                                                                                                |           |
+| 173 | Nacogdoches   | http://www.nacocad.org/open_records.htm                                                        |           |
+| 174 | Navarro       | https://navarrocad.com                                                                         |           |
+| 175 | Newton        | http://www.newtoncad.org/                                                                      |           |
+| 176 | Nolan         | https://www.nolan-cad.org/home/DataRecords                                                     |           |
+| 177 | Nueces        | http://www.nuecescad.net/                                                                      |           |
+| 178 | Ochiltree     | http://www.ochiltreecad.com/open_records.htm                                                   |           |
+| 179 | Oldham        | https://oldhamcad.org/                                                                         |           |
+| 180 | Orange        | https://orangecad.net/data-downloads                                                           |           |
+| 181 | Palo Pinto    |                                                                                                |           |
+| 182 | Panola        | http://www.panolacad.org/open_records.htm                                                      |           |
+| 183 | Parker        | https://iswdataclient.azurewebsites.net/webindex.aspx?dbkey=PARKERCAD&time=202208300324025     |           |
+| 184 | Parmer        | https://parmercad.org                                                                          |           |
+| 185 | Pecos         | https://pecoscad.org/downloads                                                                 |           |
+| 186 | Polk          | https://polkcad.org/open-records                                                               |           |
+| 187 | Potter        | https://www.prad.org                                                                           |           |
+| 188 | Presidio      | http://www.presidiocad.org/                                                                    |           |
+| 189 | Rains         | https://rainscad.org                                                                           |           |
+| 190 | Randall       | https://www.prad.org                                                                           |           |
+| 191 | Reagan        | https://www.reagancad.org/home/DataRecords                                                     | Complete  |
+| 192 | Real          | https://realcad.org                                                                            |           |
+| 193 | Red River     | https://rrcad.org/information-to-public                                                        |           |
+| 194 | Reeves        |                                                                                                |           |
+| 195 | Refugio       | https://www.refugiocad.org/home/DataRecords                                                    | Complete  |
+| 196 | Roberts       | https://robertscad.org/                                                                        |           |
+| 197 | Robertson     | https://robertsoncad.com                                                                       |           |
+| 198 | Rockwall      |                                                                                                |           |
+| 199 | Runnels       | https://runnelscad.org                                                                         |           |
+| 200 | Rusk          | http://www.ruskcad.org/open%20records.htm                                                      |           |
+| 201 | Sabine        | https://iswdataclient.azurewebsites.net/webDownloads.aspx?dbkey=SABINECAD&time=202208300341059 |           |
+| 202 | San Augustine | https://www.sanaugustinecad.org/home/DataRecords                                               | Complete  |
+| 203 | San Jacinto   |                                                                                                |           |
+| 204 | San Patricio  | https://sanpatcad.org/data-downloads                                                           |           |
+| 205 | San Saba      | https://sansabacad.org/home/DataRecords                                                        | Complete  |
+| 206 | Schleicher    | https://schleichercad.org                                                                      |           |
+| 207 | Scurry        | https://scurrytex.com/                                                                         |           |
+| 208 | Shackelford   | https://shackelfordcad.com/public-information-request                                          |           |
+| 209 | Shelby        | https://www.shelbycad.com/open-records                                                         |           |
+| 210 | Sherman       | http://www.shermancad.org/open_records.htm                                                     |           |
+| 211 | Smith         | https://www.smithcad.org/                                                                      |           |
+| 212 | Somervell     | https://somervellcad.net                                                                       |           |
+| 213 | Starr         | https://starrcad.org/                                                                          |           |
+| 214 | Stephens      | https://stephenscad.com/open-record-downloads                                                  |           |
+| 215 | Sterling      | https://www.sterlingcad.org/home/DataRecords                                                   | Complete  |
+| 216 | Stonewall     | http://www.stonewallcad.org/                                                                   |           |
+| 217 | Sutton        | http://www.suttoncad.com/                                                                      |           |
+| 218 | Swisher       | http://www.swisher-cad.org/                                                                    |           |
+| 219 | Tarrant       | https://www.tad.org/data-download                                                              |           |
+| 220 | Taylor        | https://www.taylor-cad.org/                                                                    |           |
+| 221 | Terrell       | http://www.terrellcad.org/                                                                     |           |
+| 222 | Terry         | https://terrycoad.org                                                                          |           |
+| 223 | Throckmorton  | https://throckmortoncad.org                                                                    |           |
+| 224 | Titus         | https://titus-cad.org                                                                          |           |
+| 225 | Tom Green     | https://iswdataclient.azurewebsites.net/webindex.aspx?dbkey=TOMGREENCAD&time=202208300406012   |           |
+| 226 | Travis        | https://traviscad.org/publicinformation                                                        |           |
+| 227 | Trinity       | https://trinitycad.net/                                                                        |           |
+| 228 | Tyler         | http://www.tylercad.net/                                                                       |           |
+| 229 | Upshur        | https://upshur-cad.org                                                                         |           |
+| 230 | Upton         | http://www.uptoncad.org/open_records.htm                                                       |           |
+| 231 | Uvalde        | https://www.uvaldecad.org/                                                                     |           |
+| 232 | Val Verde     | https://www.valverdecad.org/data-downloads                                                     |           |
+| 233 | Van Zandt     | https://vzcad.org                                                                              |           |
+| 234 | Victoria      | http://www.victoriacad.org/                                                                    |           |
+| 235 | Walker        | https://walkercad.org/                                                                         |           |
+| 236 | Waller        | http://www.waller-cad.org/                                                                     |           |
+| 237 | Ward          | https://www.wardcad.org/home/DataRecords                                                       | Complete  |
+| 238 | Washington    |                                                                                                |           |
+| 239 | Webb          | https://www.webbcad.org/reports                                                                |           |
+| 240 | Wharton       | https://whartoncad.net                                                                         |           |
+| 241 | Wheeler       | https://www.wheelercad.org/home/DataRecords                                                    | Complete  |
+| 242 | Wichita       | https://www.wadtx.com/                                                                         |           |
+| 243 | Wilbarger     | https://www.wilbargerappraisal.org/home/DataRecords                                            | Complete  |
+| 244 | Willacy       | https://willacycad.org                                                                         |           |
+| 245 | Williamson    | https://www.wcad.org                                                                           |           |
+| 246 | Wilson        | https://wilson-cad.org/reports                                                                 |           |
+| 247 | Winkler       | http://www.winklercad.org/                                                                     |           |
+| 248 | Wise          |                                                                                                |           |
+| 249 | Wood          | https://www.woodcad.net/open-record-downloads                                                  |           |
+| 250 | Yoakum        | http://www.yoakumcad.org/                                                                      |           |
+| 251 | Young         | https://youngcad.org/                                                                          |           |
+| 252 | Zapata        | http://zapatacad.com/                                                                          |           |

@@ -14,7 +14,7 @@ def Counties() -> DataFrame:
             "http://www.andersoncad.net/",
             None,
         ),
-        ("Andrews", "https://andrewscad.org", None),
+        ("Andrews", "https://andrewscad.org/tax-information/", None),
         ("Angelina", "http://www.angelinacad.org/open-records", "Completed"),
         ("Aransas", "http://www.aransascad.org", None),
         ("Archer", "https://www.archercad.org/home/DataRecords", "Completed"),
@@ -331,13 +331,4 @@ with open("./README.md", "w") as writer:
 with SQLite(path="./appraisals.db") as db:
     for i in data.index:
         sql = "UPDATE County SET URL = ?, Located = ? WHERE Name = ?;"
-        run(
-            db.insert(
-                sql,
-                [
-                    data["URL"][i],
-                    data["Status"][i] if data["Status"][i] is not None else "null",
-                    data["Name"][i],
-                ],
-            )
-        )
+        run(db.insert(sql, [data["URL"][i], data["Status"][i], data["Name"][i]]))
